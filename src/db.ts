@@ -11,6 +11,4 @@ const pool = new Pool({
   ssl: isProduction ? { rejectUnauthorized: false } : false,
 });
 
-console.log(connectionString)
-
 export default pool

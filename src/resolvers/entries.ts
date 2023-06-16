@@ -1,7 +1,8 @@
 import { GraphQLError } from 'graphql';
 import { getEntriesDb, postEntryDb } from '../database-queries/enlist.js';
+import { Resolvers } from '../generated/graphql.js';
 
-const resolvers = {
+const entries: Resolvers = {
   Query: {
     getEntries: () => {
       return getEntriesDb()
@@ -15,4 +16,4 @@ const resolvers = {
   
 };
 
-export default resolvers
+export default entries;

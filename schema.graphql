@@ -1,5 +1,3 @@
-const typeDefs = `#graphql
-
   type Entry {
     id: ID
     name: String
@@ -29,8 +27,3 @@ const typeDefs = `#graphql
     date: String, 
     time: String): ResponseEntry
   }
-
-`;
-
-export default typeDefs
-
