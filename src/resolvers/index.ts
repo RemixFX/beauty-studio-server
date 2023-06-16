@@ -1,4 +1,4 @@
-import Entries from './entries.js'
+import entriesResolver from './entries.js'
 
-const resolvers = { Entries };
+const resolvers = [entriesResolver].map((resolver) => resolver)
 export default resolvers;
