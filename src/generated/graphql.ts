@@ -28,11 +28,11 @@ export type Entry = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  pushEntry?: Maybe<ResponseEntry>;
+  createEntry?: Maybe<ResponseEntry>;
 };
 
 
-export type MutationPushEntryArgs = {
+export type MutationCreateEntryArgs = {
   category?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -49,7 +49,6 @@ export type Query = {
 export type ResponseEntry = {
   __typename?: 'ResponseEntry';
   date?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['ID']['output']>;
   time?: Maybe<Scalars['String']['output']>;
 };
 
@@ -156,7 +155,7 @@ export type EntryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  pushEntry?: Resolver<Maybe<ResolversTypes['ResponseEntry']>, ParentType, ContextType, Partial<MutationPushEntryArgs>>;
+  createEntry?: Resolver<Maybe<ResolversTypes['ResponseEntry']>, ParentType, ContextType, Partial<MutationCreateEntryArgs>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -165,7 +164,6 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type ResponseEntryResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResponseEntry'] = ResolversParentTypes['ResponseEntry']> = {
   date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
   time?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

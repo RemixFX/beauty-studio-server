@@ -13,14 +13,13 @@
   }
 
   type ResponseEntry {
-    id: ID,
     date: String, 
     time: String
   }
 
   type Mutation {
-    pushEntry(
-    name: String, 
+    createEntry(
+    name: String,
     phone: String, 
     service: String, 
     category: String, 
