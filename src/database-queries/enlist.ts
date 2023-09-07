@@ -5,7 +5,7 @@ export const postEntryDb = async (data) => {
 
   try {
     const entry = await db.query(
-      'INSERT INTO entries (name, phone, service, category, date, time) VALUES ($1, $2, $3, $4, $5, $6) RETURNING date, time',
+      'INSERT INTO entries (name, phone, service, category, date, time) VALUES ($1, $2, $3, $4, $5, $6) RETURNING name, phone, service, category, date, time',
       [name, phone, service, category, date, time]);
     return entry.rows[0];
   } catch (err) {

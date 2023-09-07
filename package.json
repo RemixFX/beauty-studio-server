@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/RemixFX/beauty-studio-server#readme",
   "dependencies": {
+    "@apollo/datasource-rest": "^6.1.0",
     "@apollo/server": "^4.7.3",
     "dotenv": "^16.1.4",
     "graphql": "^16.6.0",

@@ -1,6 +1,12 @@
 import { GraphQLError } from 'graphql';
 import { checkFreeEntry, getEntriesDb, postEntryDb } from '../database-queries/enlist.js';
 import { Resolvers } from '../generated/graphql.js';
+import dotenv from 'dotenv'
+import { RESTGreenApi } from '../greenApi/api.js';
+import sampleMessage from '../greenApi/sampleMessage.js'
+dotenv.config()
+
+const greenApi = new RESTGreenApi
 
 const entries: Resolvers = {
   Query: {
@@ -24,7 +30,18 @@ const entries: Resolvers = {
       if (checkFreeHour) {
         return new GraphQLError('На это время только что записались, выберите другое')
       } else {
-        return postEntryDb(args)
+        const data = await postEntryDb(args)
+        if (!data) {
+          return new GraphQLError('Ошибка сервера, попробуйте позже')
+        }
+        greenApi.sendMessage({
+          idInstance: process.env.ID_INSTANCE,
+          apiTokenInstance: process.env.API_TOKEN_INSTANCE,
+          chatId: process.env.CHAT_ID,
+          message: sampleMessage(data)
+        })
+        return data
+
       }
     }
   }
