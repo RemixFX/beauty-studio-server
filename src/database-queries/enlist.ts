@@ -1,6 +1,7 @@
+import { MutationCreateEntryArgs } from "generated/graphql.js";
 import db from "../db.js"
 
-export const postEntryDb = async (data) => {
+export const postEntryDb = async (data: Partial<MutationCreateEntryArgs>) => {
   const { name, phone, service, category, date, time } = data;
 
   try {
@@ -13,7 +14,7 @@ export const postEntryDb = async (data) => {
   }
 };
 
-export const checkFreeEntry = async (date) => {
+export const checkFreeEntry = async (date: string) => {
   try {
     const entry = await db.query(
     `

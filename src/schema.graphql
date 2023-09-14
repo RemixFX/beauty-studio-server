@@ -8,8 +8,17 @@
     time: String
   }
 
+  type ClosedDay {
+    id: ID
+    date: String
+  }
+
   type Query {
     getEntries: [Entry]
+    getClosedDaysForAdmin(
+      month: Int
+    ): [ClosedDay]
+    getClosedDaysForUser: [ClosedDay]
   }
 
   type ResponseEntry {

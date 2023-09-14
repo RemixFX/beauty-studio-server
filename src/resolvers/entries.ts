@@ -34,6 +34,7 @@ const entries: Resolvers = {
         if (!data) {
           return new GraphQLError('Ошибка сервера, попробуйте позже')
         }
+
         greenApi.sendMessage({
           idInstance: process.env.ID_INSTANCE,
           apiTokenInstance: process.env.API_TOKEN_INSTANCE,
