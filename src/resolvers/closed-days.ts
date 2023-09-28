@@ -1,4 +1,4 @@
-import { getClosedDaysForAdminDb, getClosedDaysForUserDb } from "../database-queries/closed_days.js";
+import { deleteClosedDayDb, getClosedDaysForAdminDb, getClosedDaysForUserDb, setClosedDayDb } from "../database-queries/closed_days.js";
 import { Resolvers } from "generated/graphql.js";
 
 const closedDays: Resolvers = {
@@ -9,6 +9,15 @@ const closedDays: Resolvers = {
 
     getClosedDaysForUser: () => {
       return getClosedDaysForUserDb()
+    }
+  },
+  Mutation: {
+    setClosedDay: (parent, args) => {
+      return setClosedDayDb(args)
+    },
+    
+    deleteClosedDay: (parent, args) => {
+      return deleteClosedDayDb(args)
     }
   }
 }

@@ -34,4 +34,6 @@
     category: String, 
     date: String, 
     time: String): ResponseEntry
+    setClosedDay(date: String): String
+    deleteClosedDay(id: ID): String
   }

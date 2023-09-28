@@ -35,6 +35,8 @@ export type Entry = {
 export type Mutation = {
   __typename?: 'Mutation';
   createEntry?: Maybe<ResponseEntry>;
+  deleteClosedDay?: Maybe<Scalars['String']['output']>;
+  setClosedDay?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -45,6 +47,16 @@ export type MutationCreateEntryArgs = {
   phone?: InputMaybe<Scalars['String']['input']>;
   service?: InputMaybe<Scalars['String']['input']>;
   time?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type MutationDeleteClosedDayArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type MutationSetClosedDayArgs = {
+  date?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Query = {
@@ -179,6 +191,8 @@ export type EntryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createEntry?: Resolver<Maybe<ResolversTypes['ResponseEntry']>, ParentType, ContextType, Partial<MutationCreateEntryArgs>>;
+  deleteClosedDay?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationDeleteClosedDayArgs>>;
+  setClosedDay?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationSetClosedDayArgs>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
