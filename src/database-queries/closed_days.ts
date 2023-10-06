@@ -37,15 +37,16 @@ export const getClosedDaysForUserDb = async () => {
 export const setClosedDayDb = async (data: Partial<MutationSetClosedDayArgs>) => {
   const { date } = data
   try {
-    await db.query(
+   const closedDay = await db.query(
       `
       INSERT
       INTO closed_days (date)
       VALUES ($1)
+      RETURNING id
       `,
       [date]
     );
-    return 'isClosed'
+    return {...closedDay.rows[0], status: 'closed'}
   } catch (err) {
     console.log(err)
   }
@@ -54,16 +55,17 @@ export const setClosedDayDb = async (data: Partial<MutationSetClosedDayArgs>) =>
 export const deleteClosedDayDb = async (data: Partial<MutationDeleteClosedDayArgs>) => {
   const { id } = data
   try {
-    await db.query(
+    const openDay = await db.query(
       `
       DELETE
       FROM
       closed_days
       WHERE id = $1
+      RETURNING id
       `,
       [id]
     );
-    return 'isOpen'
+    return {...openDay.rows[0], status: 'open'}
   } catch (err) {
     console.log(err)
   }

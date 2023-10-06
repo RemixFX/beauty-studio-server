@@ -35,8 +35,8 @@ export type Entry = {
 export type Mutation = {
   __typename?: 'Mutation';
   createEntry?: Maybe<ResponseEntry>;
-  deleteClosedDay?: Maybe<Scalars['String']['output']>;
-  setClosedDay?: Maybe<Scalars['String']['output']>;
+  deleteClosedDay?: Maybe<ResponseWorkStatusOfDay>;
+  setClosedDay?: Maybe<ResponseWorkStatusOfDay>;
 };
 
 
@@ -75,6 +75,12 @@ export type ResponseEntry = {
   __typename?: 'ResponseEntry';
   date?: Maybe<Scalars['String']['output']>;
   time?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResponseWorkStatusOfDay = {
+  __typename?: 'ResponseWorkStatusOfDay';
+  id?: Maybe<Scalars['ID']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -156,6 +162,7 @@ export type ResolversTypes = {
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   ResponseEntry: ResolverTypeWrapper<ResponseEntry>;
+  ResponseWorkStatusOfDay: ResolverTypeWrapper<ResponseWorkStatusOfDay>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
 
@@ -169,6 +176,7 @@ export type ResolversParentTypes = {
   Mutation: {};
   Query: {};
   ResponseEntry: ResponseEntry;
+  ResponseWorkStatusOfDay: ResponseWorkStatusOfDay;
   String: Scalars['String']['output'];
 };
 
@@ -191,8 +199,8 @@ export type EntryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createEntry?: Resolver<Maybe<ResolversTypes['ResponseEntry']>, ParentType, ContextType, Partial<MutationCreateEntryArgs>>;
-  deleteClosedDay?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationDeleteClosedDayArgs>>;
-  setClosedDay?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationSetClosedDayArgs>>;
+  deleteClosedDay?: Resolver<Maybe<ResolversTypes['ResponseWorkStatusOfDay']>, ParentType, ContextType, Partial<MutationDeleteClosedDayArgs>>;
+  setClosedDay?: Resolver<Maybe<ResolversTypes['ResponseWorkStatusOfDay']>, ParentType, ContextType, Partial<MutationSetClosedDayArgs>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -207,11 +215,18 @@ export type ResponseEntryResolvers<ContextType = any, ParentType extends Resolve
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type ResponseWorkStatusOfDayResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResponseWorkStatusOfDay'] = ResolversParentTypes['ResponseWorkStatusOfDay']> = {
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
   ClosedDay?: ClosedDayResolvers<ContextType>;
   Entry?: EntryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   ResponseEntry?: ResponseEntryResolvers<ContextType>;
+  ResponseWorkStatusOfDay?: ResponseWorkStatusOfDayResolvers<ContextType>;
 };
 
