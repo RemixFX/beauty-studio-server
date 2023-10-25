@@ -1,5 +1,10 @@
 import entriesResolver from './entries.js'
-import closedDaysResolver from './closed-days.js'
+import closedDaysResolver from './closedDays.js'
+import callBackResolver from './callBack.js';
 
-const resolvers = [entriesResolver, closedDaysResolver].map((resolver) => resolver)
+const resolvers = [
+  entriesResolver, 
+  closedDaysResolver,
+  callBackResolver,
+].map((resolver) => resolver)
 export default resolvers;

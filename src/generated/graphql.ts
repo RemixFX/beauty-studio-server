@@ -36,6 +36,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createEntry?: Maybe<ResponseEntry>;
   deleteClosedDay?: Maybe<ResponseWorkStatusOfDay>;
+  postCallBackPhone?: Maybe<ResponseCallBackPhone>;
   setClosedDay?: Maybe<ResponseWorkStatusOfDay>;
 };
 
@@ -55,6 +56,13 @@ export type MutationDeleteClosedDayArgs = {
 };
 
 
+export type MutationPostCallBackPhoneArgs = {
+  date?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+};
+
+
 export type MutationSetClosedDayArgs = {
   date?: InputMaybe<Scalars['String']['input']>;
 };
@@ -69,6 +77,14 @@ export type Query = {
 
 export type QueryGetClosedDaysForAdminArgs = {
   month?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type ResponseCallBackPhone = {
+  __typename?: 'ResponseCallBackPhone';
+  date?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['ID']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
 };
 
 export type ResponseEntry = {
@@ -161,6 +177,7 @@ export type ResolversTypes = {
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
+  ResponseCallBackPhone: ResolverTypeWrapper<ResponseCallBackPhone>;
   ResponseEntry: ResolverTypeWrapper<ResponseEntry>;
   ResponseWorkStatusOfDay: ResolverTypeWrapper<ResponseWorkStatusOfDay>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -175,6 +192,7 @@ export type ResolversParentTypes = {
   Int: Scalars['Int']['output'];
   Mutation: {};
   Query: {};
+  ResponseCallBackPhone: ResponseCallBackPhone;
   ResponseEntry: ResponseEntry;
   ResponseWorkStatusOfDay: ResponseWorkStatusOfDay;
   String: Scalars['String']['output'];
@@ -200,6 +218,7 @@ export type EntryResolvers<ContextType = any, ParentType extends ResolversParent
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createEntry?: Resolver<Maybe<ResolversTypes['ResponseEntry']>, ParentType, ContextType, Partial<MutationCreateEntryArgs>>;
   deleteClosedDay?: Resolver<Maybe<ResolversTypes['ResponseWorkStatusOfDay']>, ParentType, ContextType, Partial<MutationDeleteClosedDayArgs>>;
+  postCallBackPhone?: Resolver<Maybe<ResolversTypes['ResponseCallBackPhone']>, ParentType, ContextType, Partial<MutationPostCallBackPhoneArgs>>;
   setClosedDay?: Resolver<Maybe<ResolversTypes['ResponseWorkStatusOfDay']>, ParentType, ContextType, Partial<MutationSetClosedDayArgs>>;
 };
 
@@ -207,6 +226,14 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   getClosedDaysForAdmin?: Resolver<Maybe<Array<Maybe<ResolversTypes['ClosedDay']>>>, ParentType, ContextType, Partial<QueryGetClosedDaysForAdminArgs>>;
   getClosedDaysForUser?: Resolver<Maybe<Array<Maybe<ResolversTypes['ClosedDay']>>>, ParentType, ContextType>;
   getEntries?: Resolver<Maybe<Array<Maybe<ResolversTypes['Entry']>>>, ParentType, ContextType>;
+};
+
+export type ResponseCallBackPhoneResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResponseCallBackPhone'] = ResolversParentTypes['ResponseCallBackPhone']> = {
+  date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  phone?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type ResponseEntryResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResponseEntry'] = ResolversParentTypes['ResponseEntry']> = {
@@ -226,6 +253,7 @@ export type Resolvers<ContextType = any> = {
   Entry?: EntryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  ResponseCallBackPhone?: ResponseCallBackPhoneResolvers<ContextType>;
   ResponseEntry?: ResponseEntryResolvers<ContextType>;
   ResponseWorkStatusOfDay?: ResponseWorkStatusOfDayResolvers<ContextType>;
 };

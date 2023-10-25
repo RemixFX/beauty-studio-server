@@ -31,6 +31,13 @@
     status: String
   }
 
+  type ResponseCallBackPhone {
+    id: ID, 
+    phone: String,
+    date: String,
+    name: String
+  }
+
   type Mutation {
     createEntry(
     name: String,
@@ -41,4 +48,5 @@
     time: String): ResponseEntry
     setClosedDay(date: String): ResponseWorkStatusOfDay
     deleteClosedDay(id: ID): ResponseWorkStatusOfDay
+    postCallBackPhone(date: String, phone: String, name: String): ResponseCallBackPhone
   }

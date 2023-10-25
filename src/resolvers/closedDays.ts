@@ -1,4 +1,4 @@
-import { deleteClosedDayDb, getClosedDaysForAdminDb, getClosedDaysForUserDb, setClosedDayDb } from "../database-queries/closed_days.js";
+import { deleteClosedDayDb, getClosedDaysForAdminDb, getClosedDaysForUserDb, setClosedDayDb } from "../database-queries/closedDays.js";
 import { Resolvers } from "generated/graphql.js";
 
 const closedDays: Resolvers = {

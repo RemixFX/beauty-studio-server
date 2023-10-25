@@ -3,7 +3,7 @@ import { checkFreeEntry, getEntriesDb, postEntryDb } from '../database-queries/e
 import { Resolvers } from '../generated/graphql.js';
 import dotenv from 'dotenv'
 import { RESTGreenApi } from '../greenApi/api.js';
-import sampleMessage from '../greenApi/sampleMessage.js'
+import sampleMessage from '../greenApi/EntrySampleMessage.js'
 dotenv.config()
 
 const greenApi = new RESTGreenApi

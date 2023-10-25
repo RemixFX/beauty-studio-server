@@ -58,6 +58,6 @@ export default function sampleMessage(data) {
   }
   return `🎉🔥 Новая запись! 🙆‍♂️📢
 👱‍♀️ ${data.name} записалась на ${service} ${data.category && '- ' + category}
-📆${data.date.toLocaleDateString()} в 🕒${data.time}
-Телефон:📞 ${data.phone}`
+🗓️ ${data.date.toLocaleDateString()} в 🕒${data.time}
+📞 Телефон: ${data.phone}`
 }
